@@ -1,0 +1,63 @@
+[workspace]
+authors = ["Aadith Warrier <warrieraadith@gmail.com>"]
+channels = ["conda-forge"]
+name = "crossweave"
+platforms = [{ platform = "linux-64", cuda = "12.8" }]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.10.*"
+numpy = ">=2"
+pyrender = ">=0.1.45,<0.2"
+cxx-compiler = ">=1.11.0,<2"
+glfw = ">=3.4,<4"
+libgl = ">=1.7.0,<2"
+mesalib = ">=25.3.5,<26"
+safetensors = ">=0.7.0,<0.8"
+h5py = ">=3.16.0,<4"
+plyfile = ">=1.1,<2"
+tree = ">=2.3.2,<3"
+wandb = ">=0.26.1,<0.27"
+libcxx = ">=22.1.8,<23"
+open3d = ">=0.19.0,<0.20"
+
+[pypi-dependencies]
+crossweave = { path = ".", editable = true }
+utonia = { path = "libs/Utonia", editable= true}
+
+torch = "==2.8.0"
+torchvision = "==0.23.0"
+torchaudio = "==2.8.0"
+flash-attn  = {url = "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiFALSE-cp310-cp310-linux_x86_64.whl"}
+torch-scatter = {url =  "https://data.pyg.org/whl/torch-2.8.0%2Bcu128/torch_scatter-2.1.2%2Bpt28cu128-cp310-cp310-linux_x86_64.whl"}
+torch-cluster = {url = "https://data.pyg.org/whl/torch-2.8.0%2Bcu128/torch_cluster-1.6.3%2Bpt28cu128-cp310-cp310-linux_x86_64.whl"}
+spconv-cu126 = "*"
+
+opencv-python = "*"
+rerun-sdk = "==0.26.0"
+tqdm = "*"
+hydra-core = "*"
+addict = "*"
+scipy = "*"
+timm = "*"
+psutil = "*"
+huggingface_hub = "*"
+camtools = "*"
+trimesh = "*"
+natsort = "*"
+gradio = "*"
+einops = "*"
+lz4 = ">=4.4.5, <5"
+torchinfo = ">=1.8.0, <2"
+lightning = ">=2.6.1, <3"
+pytorch-metric-learning = ">=2.9.0, <3"
+loguru = ">=0.7.3, <0.8"
+viser = ">=0.2.23"
+matplotlib = "*"
+onnxruntime = "*"
+requests = "*"
+
+[pypi-options]
+extra-index-urls = ["https://download.pytorch.org/whl/cu128"]

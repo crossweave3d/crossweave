@@ -1,0 +1,3 @@
+[submodule "libs/Utonia"]
+	path = libs/Utonia
+	url = https://github.com/Pointcept/Utonia.git
