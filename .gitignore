@@ -1,3 +1,16 @@
-reference/
-
+# Environment and tools
 .pixi/
+.claude/
+.ruff_cache/
+
+# Python build artefacts
+__pycache__/
+*.egg-info/
+build/
+
+# Training and eval outputs
+checkpoints/
+crossweave_neurips2026/
+logs/
+wandb/
+*.log

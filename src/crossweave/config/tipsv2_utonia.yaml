@@ -1,0 +1,55 @@
+data:
+    scannet_root: ???      # raw ScanNet root (contains v2/scans, splits/)
+    scannet_cache: ???     # preprocessing output (crossweave.data.preprocess --cache_dir)
+    threerscan_root: ???   # raw 3RScan root (contains data/, files/)
+    threerscan_cache: ???  # preprocessing output (crossweave.data.preprocess --cache_dir)
+    num_workers: 11
+    img_size: [518, 518]
+    patch_size: 14
+    num_patch_point_pairs: 128
+    enable_fps: true
+    fps_ratio: 0.25
+    fps_space: "feature"
+    batch_size: 16
+    subset: 1.0
+
+# TIPSv2 ViT-L/14 image features + Utonia point features. Same settings as dinov2_utonia.yaml;
+# only the image backbone differs (TIPSv2-L is also 1024-d with 14 px patches).
+model:
+    image_encoder: tipsv2_l14
+    aggregator: salad
+    point_dim: 1224
+    image_dim: 1024
+    common_dim: 1024
+    num_clusters: 24
+    cluster_dim: 128
+
+training:
+    seed: 0
+    max_epochs: 30
+    lr: 1e-3
+    weight_decay: 1e-2
+    devices: 1
+    global_loss_weight: 1.0
+    local_loss_weight: 1.0
+    accumulate_grad_batches: 4
+
+logging:
+    root_dir: ???     # each run writes to <root_dir>/<run_id>/
+    run_id: null      # default: <base_exp_name>_<YYYYmmdd-HHMMSS>
+    use_wandb: false  # true: Weights & Biases; false: CSV
+    base_exp_name: base
+    entity: null
+    project: crossweave_neurips2026
+    group: test
+
+# no Hydra log file or .hydra/ dir
+defaults:
+    - override hydra/job_logging: none
+    - override hydra/hydra_logging: none
+    - _self_
+
+hydra:
+    output_subdir: null
+    run:
+        dir: .
